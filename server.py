@@ -29,6 +29,7 @@ print("")
 #        print (msvcrt.getch())
 #        done = True
 while 1:
+    
     if msvcrt.kbhit():
         m = msvcrt.getch()
         if m == 13:
@@ -38,6 +39,6 @@ while 1:
             message = ""
         print (m)
         
-    incoming_message = conn.recv(1024)
+    incoming_message = conn.poll(1024)
     incoming_message = incoming_message.decode()
     print("Client: ",incoming_message)
