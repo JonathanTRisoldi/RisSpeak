@@ -28,17 +28,21 @@ print("")
 #    if msvcrt.kbhit():
 #        print (msvcrt.getch())
 #        done = True
+
+message = ""
 while 1:
-    
     if msvcrt.kbhit():
-        m = msvcrt.getch()
-        if m == 13:
-            message = m
-            message = message.encode()
-            conn.send(message)
-            message = ""
-        print (m)
+        m = msvcrt.getch().decode('utf-8')
+        message += m
+        if m = 'x':
+            print("Enter has been hit")
+            #message = message.encode()
+            #conn.send(message)
+            #message = ""
+            #print("")
+        else:
+            print (m, end="", flush=True)
         
-    incoming_message = conn.poll(1024)
-    incoming_message = incoming_message.decode()
-    print("Client: ",incoming_message)
+    # incoming_message = conn.poll(1024)
+    # incoming_message = incoming_message.decode()
+    # print("Client: ",incoming_message)
