@@ -4,6 +4,12 @@ import time
 import msvcrt
 #import threading
 
+# Order of operations:
+#   1)Server starts
+#   2)CR connects
+#   3)server re-assigns CR to new socket
+#   4)CS connects
+#   5)Server re-assigns CS to appropriate socket bassed off of crid 
 
 s = socket.socket()
 host = socket.gethostname()
