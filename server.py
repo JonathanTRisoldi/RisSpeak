@@ -2,7 +2,7 @@ import socket
 import sys
 import time
 import msvcrt
-import threading
+#import threading
 
 
 s = socket.socket()
