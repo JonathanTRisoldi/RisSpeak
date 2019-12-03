@@ -2,12 +2,13 @@ import socket
 import sys
 import time
 import msvcrt
+import threading
 
 
 s = socket.socket()
 host = socket.gethostname()
 print("Server will start on host:", host)
-port = 25000
+port = 25100
 s.bind((host,port))
 print("")
 print("Server done binding to host and port successfully")
@@ -19,30 +20,28 @@ conn, addr = s.accept()
 print(addr," Has connected to the server and is now online...")
 print("")
 
-#num = 0
-#done = False
-#while not done:
-#    print(num)
-#    num += 1
-
-#    if msvcrt.kbhit():
-#        print (msvcrt.getch())
-#        done = True
-
 message = ""
+
 while 1:
     if msvcrt.kbhit():
-        m = msvcrt.getch().decode('utf-8')
+        m = msvcrt.getch().decode('ASCII')
         message += m
-        if m = 'x':
-            print("Enter has been hit")
-            #message = message.encode()
-            #conn.send(message)
-            #message = ""
-            #print("")
+        if m == '\r':
+            #print('FREAKING WORK')
+            message = message.encode()
+            conn.send(message)
+            message = ""
+            print("")
+        elif m == '\b':
+            print('\b', end="", flush=True)
+            print(' ', end="", flush=True)
+            print('\b', end="", flush=True)
         else:
             print (m, end="", flush=True)
-        
-    # incoming_message = conn.poll(1024)
-    # incoming_message = incoming_message.decode()
-    # print("Client: ",incoming_message)
+def recv():
+    while True:
+        incoming_message = conn.recv(1024)
+        incoming_message = incoming_message.decode()
+        print("Client: ",incoming_message)
+        if not incoming_message: continue
+threading.Thread(group=None, target=recv, name=None, args=(), kwargs=None, daemon=None).start()
