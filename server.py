@@ -38,10 +38,10 @@ while 1:
             print('\b', end="", flush=True)
         else:
             print (m, end="", flush=True)
-def recv():
-    while True:
-        incoming_message = conn.recv(1024)
-        incoming_message = incoming_message.decode()
-        print("Client: ",incoming_message)
-        if not incoming_message: continue
-threading.Thread(group=None, target=recv, name=None, args=(), kwargs=None, daemon=None).start()
+#def recv():
+#    while True:
+#        incoming_message = conn.recv(1024)
+#        incoming_message = incoming_message.decode()
+#        print("Client: ",incoming_message)
+#        if not incoming_message: continue
+#threading.Thread(group=None, target=recv, name=None, args=(), kwargs=None, daemon=None).start()
