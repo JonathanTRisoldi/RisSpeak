@@ -1,3 +1,5 @@
+#The core of this version of RisSpeak is from a tutorial by sentdex. Changes have been made based on my individual need IE threading for two way communication and formating.
+
 import socket
 import select
 
