@@ -1,4 +1,4 @@
-#The core of this version of RisSpeak is from a tutorial by sentdex. Changes have been made based on my individual need IE threading for two way communication and formating.
+#The core of this version of RisSpeak is from a tutorial by sentdex. Changes have been made based on my individual need IE threading for two way communication and formating and sandboxing.
 
 import socket
 import select
@@ -9,8 +9,8 @@ import threading
 
 HEADER_LENGTH = 10
 
-IP = "127.0.0.1"
-PORT = 1234
+IP = input("Host IP: ")
+PORT = int(input("Host Port: "))
 
 my_username = input("Username: ")
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
